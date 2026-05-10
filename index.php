@@ -251,7 +251,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 function field_error($field, $errors)
 {
     return isset($errors[$field])
-        ? 'style="border:2px solid red;"'
+        ? 'style="border:2px solid red !important;"'
         : '';
 }
 
@@ -290,7 +290,7 @@ function field_error($field, $errors)
                 >
 
                 <?php if (isset($errors['full_name'])): ?>
-                <div style="color:red;">
+                <div style="color:red !important;">
                     <?= htmlspecialchars($errors['full_name']) ?>
                 </div>
                 <?php endif; ?>
@@ -301,7 +301,7 @@ function field_error($field, $errors)
                 >
 
                 <?php if (isset($errors['phone'])): ?>
-                <div style="color:red;">
+                <div style="color:red !important;">
                     <?= htmlspecialchars($errors['phone']) ?>
                 </div>
                 <?php endif; ?>
@@ -311,7 +311,7 @@ function field_error($field, $errors)
                 >
 
                 <?php if (isset($errors['email'])): ?>
-                <div style="color:red;">
+                <div style="color:red !important;">
                     <?= htmlspecialchars($errors['email']) ?>
                 </div>
                 <?php endif; ?>
@@ -324,7 +324,7 @@ function field_error($field, $errors)
                     >
 
                     <?php if (isset($errors['birth_date'])): ?>
-                <div style="color:red;">
+                <div style="color:red !important;">
                     <?= htmlspecialchars($errors['birth_date']) ?>
                 </div>
                 <?php endif; ?>
@@ -348,7 +348,7 @@ function field_error($field, $errors)
                     </label>
 
                     <?php if (isset($errors['gender'])): ?>
-                <div style="color:red;">
+                <div style="color:red !important;">
                     <?= htmlspecialchars($errors['gender']) ?>
                 </div>
                 <?php endif; ?>
@@ -373,7 +373,7 @@ function field_error($field, $errors)
                     </select>
 
                     <?php if (isset($errors['languages'])): ?>
-                <div style="color:red;">
+                <div style="color:red !important;">
                     <?= htmlspecialchars($errors['languages']) ?>
                 </div>
                 <?php endif; ?>
@@ -386,7 +386,7 @@ function field_error($field, $errors)
         ><?= htmlspecialchars($form_data['biography'] ?? '') ?></textarea>
 
                     <?php if (isset($errors['biography'])): ?>
-                <div style="color:red;">
+                <div style="color:red !important;">
                     <?= htmlspecialchars($errors['biography']) ?>
                 </div>
                 <?php endif; ?>
@@ -400,7 +400,7 @@ function field_error($field, $errors)
                     </label>
 
                     <?php if (isset($errors['contract'])): ?>
-                <div style="color:red;">
+                <div style="color:red !important;">
                     <?= htmlspecialchars($errors['contract']) ?>
                 </div>
                 <?php endif; ?>
