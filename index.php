@@ -102,10 +102,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Телефон
     if (empty($phone)) {
+
         $errors['phone'] = 'Введите телефон.';
+
     } elseif (!preg_match('/^\+?[0-9\s\-]+$/', $phone)) {
+
         $errors['phone'] =
             'Телефон может содержать только цифры, пробелы, + и дефис.';
+
+    } elseif (strlen($phone) > 20) {
+
+        $errors['phone'] =
+            'Телефон не должен превышать 20 символов.';
     }
 
     // Email
@@ -296,7 +304,7 @@ function field_error($field, $errors)
                 <?php endif; ?>
 
 
-                <input type="text" name="phone" placeholder="Номер телефона"
+                <input type="text" name="phone" placeholder="Номер телефона" maxlength="20"
                     value="<?= htmlspecialchars($form_data['phone'] ?? '') ?>" <?=field_error('phone', $errors) ?>
                 >
 
