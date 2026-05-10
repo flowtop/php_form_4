@@ -333,14 +333,14 @@ function field_error($field, $errors)
                 <p>
                     Пол:<br>
 
-                    <label>
+                    <label class="radio_btn">
                         <input type="radio" name="gender" value="male" <?=(($form_data['gender'] ?? '' )==='male' )
                             ? 'checked' : '' ?>
                         >
                         Мужской
                     </label>
 
-                    <label>
+                    <label class="radio_btn">
                         <input type="radio" name="gender" value="female" <?=(($form_data['gender'] ?? '' )==='female' )
                             ? 'checked' : '' ?>
                         >
@@ -394,7 +394,7 @@ function field_error($field, $errors)
 
                 <p>
 
-                    <label>
+                    <label form_checkbox>
                         <input type="checkbox" name="contract">
                         С контрактом ознакомлен
                     </label>
