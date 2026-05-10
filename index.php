@@ -267,8 +267,11 @@ function field_error($field, $errors)
 </head>
 
 <body>
-
-    <h1>Форма</h1>
+    <header class="header">
+        <div class="header__container container">
+            <h1>Отправка формы. Cookies</h1>
+        </div>
+    </header>
 
     <?php foreach ($messages as $message): ?>
     <div style="color:green; margin-bottom:15px;">
@@ -276,135 +279,140 @@ function field_error($field, $errors)
     </div>
     <?php endforeach; ?>
 
-    <form action="" method="POST">
+    <main>
+        <div class="main__container container">
+            <form action="" method="POST">
 
 
-        <input type="text" name="full_name" placeholder="ФИО"
-            value="<?= htmlspecialchars($form_data['full_name'] ?? '') ?>" <?=field_error('full_name', $errors) ?>
-        >
-
-        <?php if (isset($errors['full_name'])): ?>
-        <div style="color:red;">
-            <?= htmlspecialchars($errors['full_name']) ?>
-        </div>
-        <?php endif; ?>
-
-
-        <input type="text" name="phone" placeholder="Номер телефона"
-            value="<?= htmlspecialchars($form_data['phone'] ?? '') ?>" <?=field_error('phone', $errors) ?>
-        >
-
-        <?php if (isset($errors['phone'])): ?>
-        <div style="color:red;">
-            <?= htmlspecialchars($errors['phone']) ?>
-        </div>
-        <?php endif; ?>
-
-        <input type="text" name="email" placeholder="Email" value="<?= htmlspecialchars($form_data['email'] ?? '') ?>"
-            <?=field_error('email', $errors) ?>
-        >
-
-        <?php if (isset($errors['email'])): ?>
-        <div style="color:red;">
-            <?= htmlspecialchars($errors['email']) ?>
-        </div>
-        <?php endif; ?>
-
-        <p>
-            Дата рождения:<br>
-
-            <input type="date" name="birth_date" value="<?= htmlspecialchars($form_data['birth_date'] ?? '') ?>"
-                <?=field_error('birth_date', $errors) ?>
-            >
-
-            <?php if (isset($errors['birth_date'])): ?>
-        <div style="color:red;">
-            <?= htmlspecialchars($errors['birth_date']) ?>
-        </div>
-        <?php endif; ?>
-        </p>
-
-        <p>
-            Пол:<br>
-
-            <label>
-                <input type="radio" name="gender" value="male" <?=(($form_data['gender'] ?? '' )==='male' ) ? 'checked'
-                    : '' ?>
-                >
-                Мужской
-            </label>
-
-            <label>
-                <input type="radio" name="gender" value="female" <?=(($form_data['gender'] ?? '' )==='female' )
-                    ? 'checked' : '' ?>
-                >
-                Женский
-            </label>
-
-            <?php if (isset($errors['gender'])): ?>
-        <div style="color:red;">
-            <?= htmlspecialchars($errors['gender']) ?>
-        </div>
-        <?php endif; ?>
-        </p>
-
-        <p>
-            Любимые ЯП:<br>
-
-            <select name="languages[]" multiple size="11" <?=field_error('languages', $errors) ?>
+                <input type="text" name="full_name" placeholder="ФИО"
+                    value="<?= htmlspecialchars($form_data['full_name'] ?? '') ?>" <?=field_error('full_name', $errors)
+                    ?>
                 >
 
-                <?php foreach ($languages as $lang): ?>
+                <?php if (isset($errors['full_name'])): ?>
+                <div style="color:red;">
+                    <?= htmlspecialchars($errors['full_name']) ?>
+                </div>
+                <?php endif; ?>
 
-                <option value="<?= htmlspecialchars($lang) ?>" <?=( isset($form_data['languages']) && in_array($lang,
-                    $form_data['languages']) ) ? 'selected' : '' ?>
+
+                <input type="text" name="phone" placeholder="Номер телефона"
+                    value="<?= htmlspecialchars($form_data['phone'] ?? '') ?>" <?=field_error('phone', $errors) ?>
+                >
+
+                <?php if (isset($errors['phone'])): ?>
+                <div style="color:red;">
+                    <?= htmlspecialchars($errors['phone']) ?>
+                </div>
+                <?php endif; ?>
+
+                <input type="text" name="email" placeholder="Email"
+                    value="<?= htmlspecialchars($form_data['email'] ?? '') ?>" <?=field_error('email', $errors) ?>
+                >
+
+                <?php if (isset($errors['email'])): ?>
+                <div style="color:red;">
+                    <?= htmlspecialchars($errors['email']) ?>
+                </div>
+                <?php endif; ?>
+
+                <p>
+                    Дата рождения:<br>
+
+                    <input type="date" name="birth_date" value="<?= htmlspecialchars($form_data['birth_date'] ?? '') ?>"
+                        <?=field_error('birth_date', $errors) ?>
                     >
-                    <?= htmlspecialchars($lang) ?>
-                </option>
 
-                <?php endforeach; ?>
+                    <?php if (isset($errors['birth_date'])): ?>
+                <div style="color:red;">
+                    <?= htmlspecialchars($errors['birth_date']) ?>
+                </div>
+                <?php endif; ?>
+                </p>
 
-            </select>
+                <p>
+                    Пол:<br>
 
-            <?php if (isset($errors['languages'])): ?>
-        <div style="color:red;">
-            <?= htmlspecialchars($errors['languages']) ?>
-        </div>
-        <?php endif; ?>
-        </p>
+                    <label>
+                        <input type="radio" name="gender" value="male" <?=(($form_data['gender'] ?? '' )==='male' )
+                            ? 'checked' : '' ?>
+                        >
+                        Мужской
+                    </label>
 
-        <p>
-            Биография:<br>
+                    <label>
+                        <input type="radio" name="gender" value="female" <?=(($form_data['gender'] ?? '' )==='female' )
+                            ? 'checked' : '' ?>
+                        >
+                        Женский
+                    </label>
 
-            <textarea name="biography" rows="6" cols="40" <?=field_error('biography', $errors) ?>
+                    <?php if (isset($errors['gender'])): ?>
+                <div style="color:red;">
+                    <?= htmlspecialchars($errors['gender']) ?>
+                </div>
+                <?php endif; ?>
+                </p>
+
+                <p>
+                    Любимые ЯП:<br>
+
+                    <select name="languages[]" multiple size="11" <?=field_error('languages', $errors) ?>
+                        >
+
+                        <?php foreach ($languages as $lang): ?>
+
+                        <option value="<?= htmlspecialchars($lang) ?>" <?=( isset($form_data['languages']) &&
+                            in_array($lang, $form_data['languages']) ) ? 'selected' : '' ?>
+                            >
+                            <?= htmlspecialchars($lang) ?>
+                        </option>
+
+                        <?php endforeach; ?>
+
+                    </select>
+
+                    <?php if (isset($errors['languages'])): ?>
+                <div style="color:red;">
+                    <?= htmlspecialchars($errors['languages']) ?>
+                </div>
+                <?php endif; ?>
+                </p>
+
+                <p>
+                    Биография:<br>
+
+                    <textarea name="biography" rows="6" cols="40" <?=field_error('biography', $errors) ?>
         ><?= htmlspecialchars($form_data['biography'] ?? '') ?></textarea>
 
-            <?php if (isset($errors['biography'])): ?>
-        <div style="color:red;">
-            <?= htmlspecialchars($errors['biography']) ?>
+                    <?php if (isset($errors['biography'])): ?>
+                <div style="color:red;">
+                    <?= htmlspecialchars($errors['biography']) ?>
+                </div>
+                <?php endif; ?>
+                </p>
+
+                <p>
+
+                    <label>
+                        <input type="checkbox" name="contract">
+                        С контрактом ознакомлен
+                    </label>
+
+                    <?php if (isset($errors['contract'])): ?>
+                <div style="color:red;">
+                    <?= htmlspecialchars($errors['contract']) ?>
+                </div>
+                <?php endif; ?>
+                </p>
+
+                <button type="submit">
+                    Отправить
+                </button>
+
+            </form>
         </div>
-        <?php endif; ?>
-        </p>
-
-        <p>
-
-            <label>
-                <input type="checkbox" name="contract">
-                С контрактом ознакомлен
-            </label>
-
-            <?php if (isset($errors['contract'])): ?>
-        <div style="color:red;">
-            <?= htmlspecialchars($errors['contract']) ?>
-        </div>
-        <?php endif; ?>
-        </p>
-
-        <button type="submit">
-            Отправить
-        </button>
-
-    </form>
+    </main>
 
 </body>
 
